@@ -1,0 +1,94 @@
+body {
+  background-color: #FFC387;
+  color: #FFFFFF;
+  min-height: 100%;
+}
+
+html {
+  min-height: 100%;
+}
+
+.admin {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+a:hover {
+  color:
+}
+
+.recipe_instructions {
+  width:auto;
+  height: 200px;
+  border: #b94a48;
+}
+
+.recipe-container {
+  margin:auto;
+  text-align:center;
+  width: 100%;
+  border: #FFFFFF solid 1px;
+  color: #4A2500;
+}
+
+.recipe-page {
+  width:70%;
+  margin: 1% auto;
+  border: red solid 1px;
+  text-align: center;
+}
+
+#recipe-header {
+  margin-left: 15%;
+  display:inline;
+  text-align: center;
+}
+
+.recipe-h3 {
+  margin-right: 75%;
+  display:inline;
+  text-align: left;
+  color: #4A2500;
+}
+
+input {
+  width:auto;
+}
+
+.main_page {
+  margin:auto;
+  margin-top:25%;
+}
+
+h1 {
+  font-size: 5em;
+}
+
+.glyphicon {
+  font-size: 2em;
+}
+
+.container {
+   font-family: 'GIRegular';
+   font-weight: normal;
+   font-style: normal;
+}
+
+.glyphicon-globe {
+  font-size: 1em;
+}
+
+input, select, textarea{
+  color: #B7B6B2;
+}
+
+.dropdown-admin {
+  width: 150px;
+  }
