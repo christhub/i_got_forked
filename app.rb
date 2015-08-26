@@ -32,13 +32,14 @@ post('/admin/new-recipe/') do
   cooking_time = params.fetch('cooking_time').to_i
   preparation_time = params.fetch('preparation_time').to_i
   serving_size = params.fetch('serving_size').to_i
+  total_time = preparation_time + cooking_time
   if params.fetch('rating') == ''
     rating = nil
   else
     rating = params.fetch('rating')
   end
   recipe_instructions = params.fetch('instructions')
-  Recipe.create({name: recipe_name, cooking_time: cooking_time, preparation_time: preparation_time, serving_size: serving_size, rating: rating, instructions: recipe_instructions})
+  Recipe.create({name: recipe_name, cooking_time: cooking_time, preparation_time: preparation_time, serving_size: serving_size, rating: rating, instructions: recipe_instructions, total_time: total_time})
   redirect('/admin/')
 end
 

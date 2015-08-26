@@ -1,8 +1,15 @@
+.container {
+   font-family: 'GIRegular';
+   font-weight: normal;
+   font-style: normal;
+}
+
 body {
   background-color: #FFC387;
   color: #FFFFFF;
   min-height: 100%;
 }
+
 
 html {
   min-height: 100%;
@@ -30,18 +37,9 @@ a:hover {
   border: #b94a48;
 }
 
-.recipe-container {
-  margin:auto;
-  text-align:center;
-  width: 100%;
-  border: #FFFFFF solid 1px;
-  color: #4A2500;
-}
-
 .recipe-page {
   width:70%;
   margin: 1% auto;
-  border: red solid 1px;
   text-align: center;
 }
 
@@ -53,7 +51,6 @@ a:hover {
 
 .recipe-h3 {
   margin-right: 75%;
-  display:inline;
   text-align: left;
   color: #4A2500;
 }
@@ -61,6 +58,7 @@ a:hover {
 input {
   width:auto;
 }
+
 
 .main_page {
   margin:auto;
@@ -75,11 +73,6 @@ h1 {
   font-size: 2em;
 }
 
-.container {
-   font-family: 'GIRegular';
-   font-weight: normal;
-   font-style: normal;
-}
 
 .glyphicon-globe {
   font-size: 1em;
@@ -92,3 +85,44 @@ input, select, textarea{
 .dropdown-admin {
   width: 150px;
   }
+
+table {
+  align: center;
+  resize:both;
+  overflow:auto;
+  width:auto;
+}
+
+td {
+  width: 1px;
+}
+
+.times {
+  font-size: 15px;
+  margin-right: 1%;
+  text-align: right;
+  color:#4A2500;
+}
+
+.recipe-container {
+  text-align:right;
+  color: #4A2500;
+  }
+
+.ingredients-container {
+  text-align: left;
+}
+
+.time-label {
+  text-size: 1em;
+  text-align: right;
+}
+
+.a-back {
+  position:fixed;
+  bottom: 10;
+}
+
+.num-int {
+  text-align: center;
+}
