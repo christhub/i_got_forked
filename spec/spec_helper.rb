@@ -5,6 +5,7 @@ require("sinatra/activerecord")
 require("recipe")
 require("ingredient")
 require('category')
+require('capybara')
 
 require("bundler/setup")
 Bundler.require(:default, :test)

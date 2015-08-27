@@ -28,4 +28,14 @@ describe(Recipe) do
       expect(test_recipe.categories()).to(eq([test_category, test_category2]))
     end
   end
+
+  describe('#split_instructions') do
+    it('adds html notation to the instructions page') do
+      instructions = "1. a 2. b 3. c"
+      name = "Name"
+      test_instructions = Recipe.create({name: name, instructions: instructions})
+      expect(test_instructions.instructions).to(eq("1. a <br> 2. b <br> 3. c <br>"))
+    end
+  end
+
 end
