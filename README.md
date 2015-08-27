@@ -2,7 +2,7 @@
 
 ##### _a web app to store your recipe collection, 8/26/15_
 
-#### by _**christian Lei | shannon mulloy**_
+#### by _**christian Lei & shannon mulloy**_
 
 ## description
 
@@ -22,7 +22,7 @@ _ruby, activerecord_
 
 ### legal
 
-copyright (c) 2015 **_christian lei | shannon mulloy_**
+copyright (c) 2015 **_christian lei & shannon mulloy_**
 
 this software is licensed under the MIT license.
 
