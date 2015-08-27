@@ -1,8 +1,8 @@
-# _Go Fork Yourself_
+# _go fork yourself_
 
-##### _create and delete recipes, search recipes by ingredients and tags, 8/26/15_
+##### _a web app to store your recipe collection, 8/26/15_
 
-#### By _**Christian Lei | Shannon Mulloy**_
+#### By _**christian Lei | shannon Mulloy**_
 
 ## Description
 
@@ -10,19 +10,19 @@ use the admin page to create, associate and delete recipes, ingredients, and cat
 
 ## Setup
 
-* _Clone from GitHub_
-* _Run: bundle_
-* _Run: rake db:create_
-* _Run: rake db:migrate_
-* _Launch in Sinatra_
+* _clone from github_
+* _run: bundle_
+* _run: rake db:create_
+* _run: rake db:migrate_
+* _launch in sinatra_
 
 ## Technologies Used
 
-_Ruby, ActiveRecord_
+_ruby, activerecord_
 
 ### Legal
 
-Copyright (c) 2015 **_Christian Lei | Shannon Mulloy_**
+Copyright (c) 2015 **_christian lei | shannon mulloy_**
 
 This software is licensed under the MIT license.
 
