@@ -49,13 +49,21 @@
   <% if @units.any? %>
     <h3>Unassign an Ingredient:</h3>
       <div class="recipe-dropdown">
-        <select onChange="window.location.href=this.value">
-          <option class='recipe_dropdown_text' value="" disabled selected>choose recipe</option>
-          <% @recipes.each do |recipe| %>
-            <option value="/admin/<%=recipe.id%>/"><%=recipe.name%></option>
-          <% end %>
+        <select>
+          <option class='recipe_dropdown_text' value="" disabled selected><%=@recipe.name%></option>
         </select>
-      </div>
+      <div>
+      <form id="ingredient_recipe_delete" action="/admin/recipe-ingredient-delete/" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <select class='dropdown-admin' id="ingredient_select" name="ingredient_select">
+          <option value="" disabled selected>choose ingredient</option>
+          <% @recipe.ingredients do |ingredient| %>
+            <option value="<%= ingredient.id %>"><%=ingredient.name%></option>
+          <% end %>
+        </select><br>
+
+        <button class='btn btn-primary' type='submit'>submit</button>
+      </form>
   <% end %>
 
   <% if @recipes.any? && @categories.any? %>

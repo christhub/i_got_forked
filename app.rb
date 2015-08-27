@@ -15,7 +15,17 @@ get('/admin/') do
   @recipes = Recipe.all
   @ingredients = Ingredient.all
   @categories = Category.all
+  @units = Unit.all
   erb(:admin)
+end
+
+get('/admin/:id/') do
+  @recipe = Recipe.find(params.fetch('id').to_i)
+  @recipes = Recipe.all
+  @ingredients = Ingredient.all
+  @categories = Category.all
+  @units = Unit.all
+  erb(:admin_recipe)
 end
 
 post('/admin/new-recipe/') do
@@ -47,10 +57,13 @@ post('/admin/new-category/') do
 end
 
 post('/admin/recipe-ingredient/') do
-  # recipe = Recipe.find(params.fetch('recipe_select').to_i)
-  # ingredient = Ingredient.find(params.fetch('ingredient_select').to_i)
-  # unit = params.fetch('unit')
   unit = Unit.create({:recipe_id => params.fetch('recipe_select').to_i, :ingredient_id => params.fetch('ingredient_select').to_i, :unit => params.fetch('unit')})
+  redirect('/admin/')
+end
+
+delete('/admin/recipe-ingredient-delete') do
+  unit = Unit.find_by_recipe_and_id(params.fetch('recipe_select').to_i, params.fetch('ingredient_select').to_i)
+  unit.destroy()
   redirect('/admin/')
 end
 

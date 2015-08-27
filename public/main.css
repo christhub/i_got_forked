@@ -55,10 +55,21 @@ a:hover {
   color: #4A2500;
 }
 
+.recipe-h4 {
+  color: #4A2500;
+}
+
 input {
   width:auto;
 }
 
+.ingredient-display {
+  color:#4A2500;
+}
+
+.ingredient-name {
+  padding-left:1em;
+}
 
 .main_page {
   margin:auto;
@@ -139,7 +150,7 @@ td {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 625px) {
   .recipe-page {
     width: 90%;
   }

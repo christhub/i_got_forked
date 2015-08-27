@@ -20,8 +20,13 @@ private
       joined_instructions = []
       split_instructions.each do |word|
         if numbers.include? word
-          joined_instructions.push("<br>")
+          joined_instructions.push('<br><br><span class="ingredient-display">')
           joined_instructions.push(word)
+          joined_instructions.push("</span>")
+        elsif word == "1."
+          joined_instructions.push('<span class="ingredient-display">')
+          joined_instructions.push(word)
+          joined_instructions.push("</span>")
         else
           joined_instructions.push(word)
         end

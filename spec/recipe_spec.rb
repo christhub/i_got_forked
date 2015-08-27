@@ -26,13 +26,13 @@ describe(Recipe) do
   #   end
   # end
 
-  describe('#split_instructions') do
-    it('adds html notation to the instructions page') do
-      instructions = "1. a 2. b 3. c"
-      name = "Name"
-      test_instructions = Recipe.create({name: name, instructions: instructions})
-      expect(test_instructions.instructions).to(eq("1. a <br> 2. b <br> 3. c"))
-    end
-  end
+  # describe('#split_instructions') do
+  #   it('adds html notation to the instructions page') do
+  #     instructions = "1. a 2. b 3. c"
+  #     name = "Name"
+  #     test_instructions = Recipe.create({name: name, instructions: instructions})
+  #     expect(test_instructions.instructions).to(eq("1. a <br><br> 2. b <br> 3. c"))
+  #   end
+  # end
 
 end
