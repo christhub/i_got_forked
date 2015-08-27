@@ -1,9 +1,10 @@
-<div class='container'>
-  <div class='text-center'>
+<div class='container admin'>
 
-  <h2>Admin</h2>
+    <div class='text-center'>
 
-  <h3>Add a Recipe:</h3>
+    <h2>Admin</h2>
+    <div class='admin-first-column'>
+      <h3>Add a Recipe:</h3>
   <form id="recipe" action="/admin/new-recipe/" method="post">
     <input type="text" name="recipe_name" placeholder="recipe name" required><br>
     <input type="text" name="cooking_time" placeholder="cooking time" required><br>
@@ -25,7 +26,9 @@
     <input type="text" name="category_name" placeholder="category name"><br>
     <button class='btn btn-primary' type='submit'>submit</button>
   </form>
-
+</div>
+</div>
+<div class='admin-second-column'>
   <% if @recipes.any? %>
     <h3>Assign an Ingredient:</h3>
       <form id="ingredient_recipe" action="/admin/recipe-ingredient/" method="post">
@@ -48,20 +51,18 @@
 
   <% if @units.any? %>
     <h3>Unassign an Ingredient:</h3>
-      <div class="recipe-dropdown">
-        <select>
-          <option class='recipe_dropdown_text' value="" disabled selected><%=@recipe.name%></option>
+    <form id="ingredient_recipe_delete" action="/admin/recipe-ingredient-delete/" method="post">
+      <input type="hidden" name="_method" value="delete">
+        <select class="dropdown-admin" id="recipe_select" name="recipe_select">
+          <option class='recipe_dropdown_text' value="<%=@recipe.id%>"><%=@recipe.name%></option>
         </select>
-      <div>
-      <form id="ingredient_recipe_delete" action="/admin/recipe-ingredient-delete/" method="post">
-        <input type="hidden" name="_method" value="delete">
+        <br>
         <select class='dropdown-admin' id="ingredient_select" name="ingredient_select">
           <option value="" disabled selected>choose ingredient</option>
-          <% @recipe.ingredients do |ingredient| %>
-            <option value="<%= ingredient.id %>"><%=ingredient.name%></option>
+          <% @recipe.ingredients.each do |line| %>
+            <option value="<%= line.id %>"><%=line.name%></option>
           <% end %>
         </select><br>
-
         <button class='btn btn-primary' type='submit'>submit</button>
       </form>
   <% end %>
@@ -126,8 +127,8 @@
         <button class='btn btn-primary' type='submit'>submit</button>
       </form>
   <% end %>
-
-  <a href="/">back</a>
+</div>
+  <a class='back' href="/">back</a>
 
   </div>
 </div>

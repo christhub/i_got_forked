@@ -5,6 +5,7 @@ class Recipe < ActiveRecord::Base
   validates(:instructions, {:presence => true, :length => {:maximum => 1000}})
   before_save(:downcase_everything)
   before_save(:split_instructions)
+  before_save(:make_stars)
 
 private
 
@@ -14,7 +15,7 @@ private
   end
 
   def split_instructions
-    numbers = ["2.", "3.", "4."]
+    numbers = ["2.", "3.", "4.", "5."]
     split_instructions = self.instructions.split(" ")
     if split_instructions & numbers
       joined_instructions = []
@@ -35,6 +36,22 @@ private
     end
     self.instructions = instructions
     # binding.pry
+  end
+
+  def make_stars
+    stars = []
+    if self.rating == 1
+      stars.push("&#9733;")
+    elsif self.rating == 2
+      stars.push("&#9733; &#9733;")
+    elsif self.rating == 3
+      stars.push("&#9733; &#9733; &#9733;")
+    elsif self.rating ==4
+      stars.push("&#9733; &#9733; &#9733; &#9733;")
+    else
+      stars.push("&#9733; &#9733; &#9733; &#9733; &#9733;")
+    end
+    self.rating = stars.join(" ")
   end
 
 end

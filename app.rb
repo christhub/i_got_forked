@@ -61,8 +61,10 @@ post('/admin/recipe-ingredient/') do
   redirect('/admin/')
 end
 
-delete('/admin/recipe-ingredient-delete') do
-  unit = Unit.find_by_recipe_and_id(params.fetch('recipe_select').to_i, params.fetch('ingredient_select').to_i)
+delete('/admin/recipe-ingredient-delete/') do
+  recipe_id = params.fetch('recipe_select').to_i
+  ingredient_id = params.fetch('ingredient_select').to_i
+  unit = Unit.find_by_recipe_and_ingredient(recipe_id, ingredient_id)
   unit.destroy()
   redirect('/admin/')
 end
