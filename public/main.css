@@ -38,7 +38,7 @@ a:hover {
 }
 
 .recipe-page {
-  width:70%;
+  width:35%;
   margin: 1% auto;
   text-align: center;
 }
@@ -125,6 +125,18 @@ td {
 
 .num-int {
   text-align: center;
+}
+
+@media screen and (max-width: 1215px) {
+  .recipe-page {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .recipe-page {
+    width: 65%;
+  }
 }
 
 @media screen and (max-width: 600px) {

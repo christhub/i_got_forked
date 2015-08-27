@@ -1,5 +1,6 @@
 class Ingredient < ActiveRecord::Base
-  has_and_belongs_to_many(:recipes)
+  has_many(:units)
+  has_many :recipes, through: :units
   validates(:name, {presence: true})
   before_save(:downcase_name)
 

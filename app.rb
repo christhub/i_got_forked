@@ -1,6 +1,6 @@
-# ENV['RACK_ENV'] = 'development'
-require 'active_record'
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+ENV['RACK_ENV'] = 'development'
+# require 'active_record'
+# ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 require('bundler/setup')
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
@@ -47,9 +47,10 @@ post('/admin/new-category/') do
 end
 
 post('/admin/recipe-ingredient/') do
-  recipe = Recipe.find(params.fetch('recipe_select').to_i)
-  ingredient = Ingredient.find(params.fetch('ingredient_select').to_i)
-  recipe.ingredients.push(ingredient)
+  # recipe = Recipe.find(params.fetch('recipe_select').to_i)
+  # ingredient = Ingredient.find(params.fetch('ingredient_select').to_i)
+  # unit = params.fetch('unit')
+  unit = Unit.create({:recipe_id => params.fetch('recipe_select').to_i, :ingredient_id => params.fetch('ingredient_select').to_i, :unit => params.fetch('unit')})
   redirect('/admin/')
 end
 

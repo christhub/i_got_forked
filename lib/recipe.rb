@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
-  has_and_belongs_to_many(:ingredients)
+  has_many(:units)
+  has_many :ingredients, through: :units
   has_and_belongs_to_many(:categories)
   validates(:instructions, {:presence => true, :length => {:maximum => 1000}})
   before_save(:downcase_everything)
@@ -13,22 +14,22 @@ private
   end
 
   def split_instructions
-    numbers = ["1.", "2.", "3.", "4."]
+    numbers = ["2.", "3.", "4."]
     split_instructions = self.instructions.split(" ")
     if split_instructions & numbers
       joined_instructions = []
       split_instructions.each do |word|
         if numbers.include? word
-          joined_instructions.push(word)
           joined_instructions.push("<br>")
+          joined_instructions.push(word)
         else
           joined_instructions.push(word)
         end
       end
     instructions = joined_instructions.join(" ")
-    binding.pry
-    return instructions
     end
+    self.instructions = instructions
+    # binding.pry
   end
 
 end
