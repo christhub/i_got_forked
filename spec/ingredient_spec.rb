@@ -7,4 +7,10 @@ describe(Ingredient) do
       expect(Ingredient.find(test.id)).to(eq(test))
     end
   end
+  describe('#name') do
+    it('returns an ingredients name') do
+      test = Ingredient.create({:name => 'salt'})
+      expect(test.name).to(eq('salt'))
+    end
+  end
 end

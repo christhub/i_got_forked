@@ -10,24 +10,23 @@
     <input type="text" name="preparation_time" placeholder="preparation time" required><br>
     <input type="text" name="serving_size" placeholder="serving size" required><br>
     <input type="text" name="rating" placeholder="rating"><br>
-    <!-- <input class='recipe_instructions' type="textarea" name="instructions" placeholder="instructions" required><br> -->
     <textarea class="recipe_instructions" name="instructions" form="recipe" placeholder='instructions' required></textarea><br>
     <button class='btn btn-primary' type='submit'>submit</button>
   </form>
 
   <h3>Add an Ingredient:</h3>
-  <form id="form_id" action="/admin/new-ingredient/" method="post">
+  <form id="ingredient" action="/admin/new-ingredient/" method="post">
     <input type="text" name="ingredient_name" placeholder="ingredient name"><br>
     <button class='btn btn-primary' type='submit'>submit</button>
   </form>
 
   <h3>Add a Category:</h3>
-  <form id="form_id" action="/admin/new-category/" method="post">
+  <form id="category" action="/admin/new-category/" method="post">
     <input type="text" name="category_name" placeholder="category name"><br>
     <button class='btn btn-primary' type='submit'>submit</button>
   </form>
 
-  <% if @recipes.any? && @ingredients.any? %>
+  <% if @recipes.any? %>
     <h3>Assign an Ingredient:</h3>
       <form id="ingredient_recipe" action="/admin/recipe-ingredient/" method="post">
         <select class='dropdown-admin' id="recipe_select" name="recipe_select">

@@ -10,7 +10,7 @@ class Recipe < ActiveRecord::Migration
       t.column(:serving_size, :int)
 
       t.timestamps
-      
+
     end
 
     create_table(:ingredients) do |t|

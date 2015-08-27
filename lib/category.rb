@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
 private
 
   define_method(:downcase_name) do
-     self.name=(name().downcase!())
+     self.name=(name().downcase())
   end
 
 end
