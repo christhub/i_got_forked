@@ -2,7 +2,7 @@
 
 ##### _a web app to store your recipe collection, 8/26/15_
 
-#### by _**christian Lei + shannon mulloy**_
+#### by _**christian lei + shannon mulloy**_
 
 ## description
 
