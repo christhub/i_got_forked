@@ -1,0 +1,18 @@
+<div class="recipe-page container">
+<div id="recipe-header">
+  <div id="text-center">
+  <h2>Ingredients:</h2>
+</div>
+<div class="recipe-dropdown">
+  <select onChange="window.location.href=this.value">
+    <option class='recipe_dropdown_text' value="" disabled selected>choose ingredient</option>
+    <% @ingredients.each do |ingredient| %>
+      <option value="/ingredients/<%=ingredient.id%>/"><%=ingredient.name%></option>
+    <% end %>
+  </select>
+</div>
+</div>
+<br>
+<br>
+<a class="a-back" href="/">back</a>
+</div>

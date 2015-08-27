@@ -32,9 +32,9 @@ a:hover {
 }
 
 .recipe_instructions {
-  width:auto;
+  width: 9.5em;
   height: 200px;
-  border: #b94a48;
+  border: 1px solid #B7B6B2;
 }
 
 .recipe-page {
@@ -50,7 +50,7 @@ a:hover {
 }
 
 .recipe-h3 {
-  margin-right: 75%;
+  margin-right: 50%;
   text-align: left;
   color: #4A2500;
 }
@@ -125,4 +125,10 @@ td {
 
 .num-int {
   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .recipe-page {
+    width: 90%;
+  }
 }

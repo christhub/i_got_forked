@@ -1,78 +1,113 @@
 <div class='container'>
+  <div class='text-center'>
 
-<div class='text-center'>
+  <h2>Admin</h2>
 
-<h2>Admin</h2>
+  <h3>Add a Recipe:</h3>
+  <form id="recipe" action="/admin/new-recipe/" method="post">
+    <input type="text" name="recipe_name" placeholder="recipe name" required><br>
+    <input type="text" name="cooking_time" placeholder="cooking time" required><br>
+    <input type="text" name="preparation_time" placeholder="preparation time" required><br>
+    <input type="text" name="serving_size" placeholder="serving size" required><br>
+    <input type="text" name="rating" placeholder="rating"><br>
+    <!-- <input class='recipe_instructions' type="textarea" name="instructions" placeholder="instructions" required><br> -->
+    <textarea class="recipe_instructions" name="instructions" form="recipe" placeholder='instructions' required></textarea><br>
+    <button class='btn btn-primary' type='submit'>submit</button>
+  </form>
 
-<h3>Add a Recipe:</h3>
-<form id="recipe" action="/admin/new-recipe/" method="post">
-  <input type="text" name="recipe_name" placeholder="recipe name" required><br>
-  <input type="text" name="cooking_time" placeholder="cooking time" required><br>
-  <input type="text" name="preparation_time" placeholder="preparation time" required><br>
-  <input type="text" name="serving_size" placeholder="serving size" required><br>
-  <input type="text" name="rating" placeholder="rating"><br>
-  <!-- <input class='recipe_instructions' type="text" name="instructions" placeholder="instructions" required><br> -->
-  <textarea class="recipe_instructions" name="instructions" form="recipe" placeholder='instructions' required></textarea><br>
-  <button class='btn btn-primary' type='submit'>submit</button>
-</form>
+  <h3>Add an Ingredient:</h3>
+  <form id="form_id" action="/admin/new-ingredient/" method="post">
+    <input type="text" name="ingredient_name" placeholder="ingredient name"><br>
+    <button class='btn btn-primary' type='submit'>submit</button>
+  </form>
 
+  <h3>Add a Category:</h3>
+  <form id="form_id" action="/admin/new-category/" method="post">
+    <input type="text" name="category_name" placeholder="category name"><br>
+    <button class='btn btn-primary' type='submit'>submit</button>
+  </form>
 
+  <% if @recipes.any? && @ingredients.any? %>
+    <h3>Assign an Ingredient:</h3>
+      <form id="ingredient_recipe" action="/admin/recipe-ingredient/" method="post">
+        <select class='dropdown-admin' id="recipe_select" name="recipe_select">
+          <option value="" disabled selected>choose recipe</option>
+          <% @recipes.each do |recipe| %>
+            <option value="<%= recipe.id %>"><%=recipe.name%></option>
+          <% end %>
+        </select><br>
+        <select class='dropdown-admin' id="ingredient_select" name="ingredient_select">
+          <option value="" disabled selected>choose ingredient</option>
+          <% @ingredients.each do |ingredient| %>
+            <option value="<%= ingredient.id %>"><%=ingredient.name%></option>
+          <% end %>
+        </select><br>
+        <button class='btn btn-primary' type='submit'>submit</button>
+      </form>
+  <% end %>
 
-<h3>Add an Ingredient:</h3>
-<form id="form_id" action="/admin/new-ingredient/" method="post">
-  <input type="text" name="ingredient_name" placeholder="ingredient name"><br>
-  <button class='btn btn-primary' type='submit'>submit</button>
-</form>
+  <% if @recipes.any? && @categories.any? %>
+    <h3>Assign a Category:</h3>
+      <form id="category_recipe" action="/admin/recipe-category/" method="post">
+        <select class='dropdown-admin' id="recipe_select" name="recipe_select">
+          <option value="" disabled selected>choose recipe</option>
+          <% @recipes.each do |recipe| %>
+            <option value="<%= recipe.id %>"><%=recipe.name%></option>
+          <% end %>
+        </select><br>
+        <select class='dropdown-admin' id="category_select" name="category_select">
+          <option value="" disabled selected>choose category</option>
+          <% @categories.each do |category| %>
+            <option value="<%= category.id %>"><%=category.name%></option>
+          <% end %>
+        </select><br>
+        <button class='btn btn-primary' type='submit'>submit</button>
+      </form>
+  <% end %>
 
+  <% if @recipes.any? %>
+    <h3>Delete a Recipe:</h3>
+      <form id="recipe_delete" action="/admin/recipe-delete/" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <select class='dropdown-admin' id="recipe_delete" name="recipe_delete">
+          <option value="" disabled selected>choose recipe</option>
+          <% @recipes.each do |recipe| %>
+            <option value="<%= recipe.id %>"><%=recipe.name%></option>
+          <% end %>
+        </select><br>
+        <button class='btn btn-primary' type='submit'>submit</button>
+      </form>
+  <% end %>
 
-<% if @recipes.any? %>
-  <h3>Assign an Ingredient:</h3>
-    <form id="ingredient_recipe" action="/admin/recipe-ingredient/" method="post">
-      <select class='dropdown-admin' id="recipe_select" name="recipe_select">
-        <option value="" disabled selected>choose recipe</option>
-        <% @recipes.each do |recipe| %>
-          <option value="<%= recipe.id %>"><%=recipe.name%></option>
-        <% end %>
-      </select><br>
-      <select class='dropdown-admin' id="ingredient_select" name="ingredient_select">
-        <option value="" disabled selected>choose ingredient</option>
-        <% @ingredients.each do |ingredient| %>
-          <option value="<%= ingredient.id %>"><%=ingredient.name%></option>
-        <% end %>
-      </select><br>
-      <button class='btn btn-primary' type='submit'>submit</button>
-    </form>
-<% end %>
+  <% if @ingredients.any? %>
+    <h3>Delete an Ingredient:</h3>
+      <form id="ingredient_delete" action="/admin/ingredient-delete/" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <select class='dropdown-admin' id="ingredient_delete" name="ingredient_delete">
+          <option value="" disabled selected>choose ingredient</option>
+          <% @ingredients.each do |ingredient| %>
+            <option value="<%= ingredient.id %>"><%=ingredient.name%></option>
+          <% end %>
+        </select><br>
+        <button class='btn btn-primary' type='submit'>submit</button>
+      </form>
+  <% end %>
 
-<% if @recipes.any? %>
-  <h3>Delete a Recipe:</h3>
-    <form id="recipe_delete" action="/admin/recipe-delete/" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <select class='dropdown-admin' id="recipe_delete" name="recipe_delete">
-        <option value="" disabled selected>choose recipe</option>
-        <% @recipes.each do |recipe| %>
-          <option value="<%= recipe.id %>"><%=recipe.name%></option>
-        <% end %>
-      </select><br>
-      <button class='btn btn-primary' type='submit'>submit</button>
-    </form>
-<% end %>
+  <% if @categories.any? %>
+    <h3>Delete an Category:</h3>
+      <form id="category_delete" action="/admin/category-delete/" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <select class='dropdown-admin' id="category_delete" name="category_delete">
+          <option value="" disabled selected>choose category</option>
+          <% @categories.each do |category| %>
+            <option value="<%= category.id %>"><%=category.name%></option>
+          <% end %>
+        </select><br>
+        <button class='btn btn-primary' type='submit'>submit</button>
+      </form>
+  <% end %>
 
-<% if @ingredients.any? %>
-  <h3>Delete an Ingredient:</h3>
-    <form id="ingredient_delete" action="/admin/ingredient-delete/" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <select class='dropdown-admin' id="ingredient_delete" name="ingredient_delete">
-        <option value="" disabled selected>choose ingredient</option>
-        <% @ingredients.each do |ingredient| %>
-          <option value="<%= ingredient.id %>"><%=ingredient.name%></option>
-        <% end %>
-      </select><br>
-      <button class='btn btn-primary' type='submit'>submit</button>
-    </form>
-<% end %>
+  <a href="/">back</a>
 
-<a href="/">back</a>
-
-</div>
+  </div>
 </div>

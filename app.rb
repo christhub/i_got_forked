@@ -6,25 +6,13 @@ get('/') do
   erb(:index)
 end
 
+#######################     ADMIN      #####################################
+
 get('/admin/') do
   @recipes = Recipe.all
   @ingredients = Ingredient.all
-  erb(:admin)
-end
-
-get('/recipes/') do
-  @recipes = Recipe.all
-  erb(:recipes)
-end
-
-get('/categories/') do
   @categories = Category.all
-  erb(:categories)
-end
-
-get('/ingredients/') do
-  @ingredients = Ingredient.all
-  erb(:ingredients)
+  erb(:admin)
 end
 
 post('/admin/new-recipe/') do
@@ -49,10 +37,23 @@ post('/admin/new-ingredient/') do
   redirect('/admin/')
 end
 
+post('/admin/new-category/') do
+  name = params.fetch('category_name')
+  Category.create({:name => name})
+  redirect('/admin/')
+end
+
 post('/admin/recipe-ingredient/') do
   recipe = Recipe.find(params.fetch('recipe_select').to_i)
   ingredient = Ingredient.find(params.fetch('ingredient_select').to_i)
   recipe.ingredients.push(ingredient)
+  redirect('/admin/')
+end
+
+post('/admin/recipe-category/') do
+  recipe = Recipe.find(params.fetch('recipe_select').to_i)
+  category = Category.find(params.fetch('category_select').to_i)
+  recipe.categories.push(category)
   redirect('/admin/')
 end
 
@@ -68,8 +69,50 @@ delete('/admin/ingredient-delete/') do
   redirect('/admin/')
 end
 
+delete('/admin/category-delete/') do
+  category = Category.find(params.fetch('category_delete').to_i)
+  category.destroy()
+  redirect('/admin/')
+end
+
+############################    RECIPES    ##################################
+
+get('/recipes/') do
+  @recipes = Recipe.all
+  erb(:recipes)
+end
+
 get('/recipes/:id/') do
   @recipes = Recipe.all
   @recipe = Recipe.find(params.fetch('id').to_i)
   erb(:recipe)
+end
+
+
+############################    CATEGORIES    ###############################
+
+get('/categories/') do
+  @categories = Category.all
+  erb(:categories)
+end
+
+get('/categories/:id/') do
+  @categories = Category.all
+  @category = Category.find(params.fetch('id').to_i)
+  @recipes = @category.recipes
+  erb(:category)
+end
+
+############################    INGREDIENTS    ##############################
+
+get('/ingredients/') do
+  @ingredients = Ingredient.all
+  erb(:ingredients)
+end
+
+get('/ingredients/:id/') do
+  @ingredients = Ingredient.all
+  @ingredient = Ingredient.find(params.fetch('id').to_i)
+  @recipes = @ingredient.recipes
+  erb(:ingredient)
 end
