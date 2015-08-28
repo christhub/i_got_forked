@@ -32,7 +32,7 @@ private
           joined_instructions.push(word)
         end
       end
-      instructions = joined_instructions.join(" ")
+    instructions = joined_instructions.join(" ")
     end
     self.instructions = instructions
     # binding.pry
