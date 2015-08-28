@@ -40,16 +40,10 @@ private
 
   def make_stars
     stars = []
-    if self.rating == 1
+    rating = self.rating.to_i
+    idx = 0
+    while idx < rating
       stars.push("&#9733;")
-    elsif self.rating == 2
-      stars.push("&#9733; &#9733;")
-    elsif self.rating == 3
-      stars.push("&#9733; &#9733; &#9733;")
-    elsif self.rating ==4
-      stars.push("&#9733; &#9733; &#9733; &#9733;")
-    else
-      stars.push("&#9733; &#9733; &#9733; &#9733; &#9733;")
     end
     self.rating = stars.join(" ")
   end
